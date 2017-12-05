@@ -26,15 +26,7 @@ public class Time {
         int result = numberOfHours;
         boolean isMidnight = isAM && numberOfHours == 12;
         boolean isEvening = !isAM && numberOfHours < 12;
-
-        if (isMidnight) {
-            result = 0;
-        }
-        if (isEvening) {
-            result = numberOfHours + 12;
-        }
-
-        return result;
+        return isMidnight ? 0 : isEvening ? numberOfHours + 12 : result;
     }
 
     public Integer getNumberOfMinutes() {
