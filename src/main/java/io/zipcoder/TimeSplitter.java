@@ -12,11 +12,7 @@ public class TimeSplitter {
         if(!Pattern.matches("\\d{1,2}:[0-6]\\d[aA|pP][mM]",input)) {
             throw new IllegalArgumentException();
         }
-        int hourStart = 0, hourEnd = 1;
-        if(input.length() == 7) {
-            hourEnd = 2;
-        }
-
+        int hourStart = 0, hourEnd = input.length() == 7 ? 2 : 1;
         int minuteStart = hourEnd+1, minuteEnd = minuteStart+2;
         int meridianStart = minuteEnd, meridianEnd = meridianStart+2;
             this.time = new Time( // 09:00am
