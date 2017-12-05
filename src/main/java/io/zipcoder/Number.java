@@ -53,8 +53,10 @@ public enum Number {
                 return StringUtils.capitalize(number.name().toLowerCase());
             }
         }
-        StringBuilder errorMessage = new StringBuilder("[ %s ] is not a valid input value.");
-        Arrays.asList(values()).forEach(enumeration -> errorMessage.append(enumeration.getValue()));
+        String base = String.format("[ %s ] is not a valid input value.", val);
+        StringBuilder errorMessage = new StringBuilder(base);
+        errorMessage.append("\nTry inputting one of the values below.");
+        Arrays.asList(values()).forEach(enumeration -> errorMessage.append("\n" + enumeration.getValue()));
         throw new IllegalArgumentException(errorMessage.toString());
     }
 
