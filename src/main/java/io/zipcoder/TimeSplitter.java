@@ -16,7 +16,7 @@ public class TimeSplitter {
                 hourStart = 0,             hourEnd = input.length() == 7 ? 2 : 1,
                 minuteStart = hourEnd + 1, minuteEnd = minuteStart + 2,
                 meridianStart = minuteEnd, meridianEnd = meridianStart + 2;
-        this.time = new Time( // 09:00am
+        this.time = new Time(
                 input.substring(hourStart, hourEnd),
                 input.substring(minuteStart, minuteEnd),
                 input.substring(meridianStart, meridianEnd));

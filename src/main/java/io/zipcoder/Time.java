@@ -21,7 +21,6 @@ public class Time {
                 "am".equals(meridian));
     }
 
-
     public Integer getNumberOfHours() {
         int result = numberOfHours;
         boolean isMidnight = isAM && numberOfHours == 12;

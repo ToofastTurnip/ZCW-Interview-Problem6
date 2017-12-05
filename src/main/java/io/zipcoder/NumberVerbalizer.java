@@ -26,41 +26,36 @@ public class NumberVerbalizer {
 
 
     private String numberUnder10() {
-        if (input > 10) return "";
-        if (input == 0) return "Zero";
         String response = "";
-        if (input % 100 < 10) {
-            response = "Zero " + Number.getName(input);
-        }
+        if (input > 10) return response;
+        if (input == 0) return "Zero";
+        if (input % 100 < 10) response = "Zero " + Number.getName(input);
         return response;
     }
 
     private String numberGreaterThan10LessThan20() {
-        if ((input < 10) || (input > 20)) return "";
         String response = "";
-        if ((input % 100 > 9) && (input % 100 < 20)) {
+        if (input < 10 || input > 20) return response;
+        if ((input % 100 > 9) && (input % 100 < 20))
             response = Number.getName(input);
-        }
         return response;
     }
 
     private String numberGreaterThan20() {
+        String response = "";
+
         // If the number is greater than 20 exit method immediately
-        if (input < 20) return "";
+        if (input < 20) return response;
 
         // If the number is greater than 20 continue to process
-        String response = "";
         String remainderString;
         Integer baseTenValue = 50, remainder = 0;
         while (baseTenValue > 19) {
             remainder = input % baseTenValue;
-            if (remainder > 9) {
-                baseTenValue -= 10;
-            } else {
-                break;
-            }
+            if (remainder > 9) baseTenValue -= 10;
+            else break;
         }
-        remainderString = (Number.getName(remainder) == null ? "" : " " + Number.getName(remainder));
+        remainderString = Number.getName(remainder) == null ? response : " " + Number.getName(remainder);
         response += Number.getName(baseTenValue) + remainderString;
         return response;
     }

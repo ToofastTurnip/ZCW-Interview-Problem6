@@ -2,6 +2,9 @@ package io.zipcoder;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 /**
  * Created by leon on 12/4/17.
  */
@@ -50,7 +53,9 @@ public enum Number {
                 return StringUtils.capitalize(number.name().toLowerCase());
             }
         }
-        throw new IllegalArgumentException();
+        StringBuilder errorMessage = new StringBuilder("[ %s ] is not a valid input value.");
+        Arrays.asList(values()).forEach(enumeration -> errorMessage.append(enumeration.getValue()));
+        throw new IllegalArgumentException(errorMessage.toString());
     }
 
     public static int getValue(String val) {
